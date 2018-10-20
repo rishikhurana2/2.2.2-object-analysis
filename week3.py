@@ -7,8 +7,8 @@ class week3lab:
 	maxY = 0
 	img = cv2.imread("rect.jpg")
 	hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-	THRESHOLD_MIN = np.array([0,0,200], np.uint8)
-	THRESHOLD_MAX = np.array([255, 0, 255], np.uint8)
+	THRESHOLD_MIN = np.array([0,0,236], np.uint8)
+	THRESHOLD_MAX = np.array([255, 100, 255], np.uint8)
 	threshedframe = cv2.inRange(hsv, THRESHOLD_MIN, THRESHOLD_MAX)
 	count = -1;
 	image, contours, hierarchy = cv2.findContours(threshedframe, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -30,11 +30,15 @@ class week3lab:
 		focalLength = 700
 		realWidth = 50
 		realHeight = 25
-		imgCenterX = width/2
-		imgCenterY = height/2
+		imgCenterX = (maxX + minX)/2
+		imgCenterY = (maxY + minY)/2
+		centerX = width/2
+		centerY = height/2
+		xOffset = imgCenterX - centerX
+		yOffset = imgCenterY - centerY
 	distance = (focalLength * realWidth)/width
-	azimuth = np.arctan(imgCenterX/focalLength)
-	altitude = np.arctan(imgCenterY/focalLength)
+	azimuth = np.arctan(xOffset/focalLength)*180/np.pi
+	altitude = np.arctan(yOffset/focalLength)*180/np.pi
 	print(distance)
 	print(azimuth)
 	print(altitude)
