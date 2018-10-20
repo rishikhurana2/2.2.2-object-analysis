@@ -2,7 +2,7 @@
 ### Lab Guidelines
 Using the provided image in the module folder, detect the center rectangle using techniques taught in the module.
 You are welcome and encouraged to use your lab code from the previous module.
-The program should print the distance and the azimuth or altitude.
+The program should print the distance (in centimeters), the azimuth (in degrees) and the altitude (also in degrees).
 
 Assume the focal length is 700 and dimension of the actual target is 50 cm x 25 cm.
 
